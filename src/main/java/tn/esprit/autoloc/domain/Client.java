@@ -2,6 +2,7 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 import java.time.*;
 
 @Entity
@@ -27,4 +28,7 @@ public class Client {
     private String numPermis;
 
     private LocalDate dateInscription;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private Set<Reservation> reservations;
 }
